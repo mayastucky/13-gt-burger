@@ -16,10 +16,12 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.get("/", function (req, res) {
-  //   if (err) throw err;
-  res.send("Hello");
-});
+var routes = require("./controllers/burgers_controller.js");
+// app.get("/", function (req, res) {
+//   //   if (err) throw err;
+//   res.send("Hello");
+// });
+app.use(routes);
 
 app.listen(PORT, function () {
   console.log(`App now listening at http://localhost:${PORT}`);

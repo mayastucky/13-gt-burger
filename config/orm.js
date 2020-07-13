@@ -1,5 +1,35 @@
 var connection = require("./connection.js");
 
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
+// Helper function to convert object key/value pairs to SQL syntax
+function objToSql(ob) {
+  var arr = [];
+
+  // loop through the keys and push the key/value as a string int arr
+  for (var key in ob) {
+    var value = ob[key];
+    if (Object.hasOwnProperty.call(ob, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
+      }
+      // e.g. {sleepy: true} => ["sleepy=true"]
+      arr.push(key + "=" + value);
+    }
+  }
+
+  // translate array of strings to a single comma-separated string
+  return arr.toString();
+}
+
 // Object Relational Mapper (ORM)
 
 // The ?? signs are for swapping out table or column names
@@ -9,15 +39,21 @@ var connection = require("./connection.js");
 var orm = {
   // The last variable cb represents the anonymous function being passed from server.js
   selectAll: function (tableInput, cb) {
-    var queryString = "SELECT * FROM ??";
+    var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, [tableInput], function (err, result) {
       if (err) throw err;
       cb(result);
     });
   },
   insertOne: function (tableInput, column, values, cb) {
-    var queryString = "INSERT INTO ?? (??) VALUES (?)";
-    connection.query(queryString, [tableInput, column, values], function (
+    var queryString = "INSERT INTO " + tableInput;
+    queryString += " (";
+    queryString += cols.toString();
+    queryString += ") ";
+    queryString += "VALUES (";
+    queryString += printQuestionMarks(values.length);
+    queryString += ") ";
+    connection.query(queryString, [tableInput, values], function (
       err,
       result
     ) {
@@ -25,12 +61,24 @@ var orm = {
       cb(result);
     });
   },
+  updateOne: function(table, objColVals, condition, cb) {
+    var queryString = "UPDATE " + table;
 
-  //update is tricky so wait wait wait
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
 
-  //   updateOne: function(tableInput, column, values, cb){
-  //       var queryString = "UPDATE  ?? SET "
-  //   }
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+
 };
 
 module.exports = orm;

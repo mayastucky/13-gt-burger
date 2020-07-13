@@ -7,11 +7,15 @@ const burgers = {
     });
   },
   insertOne: function (cb) {
-    orm.insertOne("burgers", column, values, function (res) {
+    orm.insertOne("burgers", columns, values, function (res) {
       cb(res);
     });
   },
-  //DO UPDATE ONE LATER
+  updateOne: function (cb) {
+    orm.updateOne("burgers", objColVals, condition, function (res) {
+      cb(res);
+    });
+  },
 };
 
 module.exports = burgers;
