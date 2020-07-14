@@ -1,5 +1,6 @@
+//this file doesn't work right 
 $(function () {
-  $(".devoured").on("click", function (event) {
+  $("#devouredButton").on("click", function (event) {
     var id = $(this).data("id");
     $.ajax("/api/burgers" + id, {
       type: "PUT",
@@ -8,11 +9,12 @@ $(function () {
       location.reload();
     });
   });
-
-  $(".create-form").on("submit", function (event) {
+  $("#addButton").on("submit", function (event) {
+    console.log("in the submit");
     event.preventDefault();
     var newBurgs = {
       burger_name: $("#bn").val().trim(),
+      //burger_name: $("#bn"),
     };
     $.ajax("/api/burgers", {
       type: "POST",
