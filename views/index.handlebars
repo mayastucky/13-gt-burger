@@ -4,13 +4,13 @@
     <h1 style="text-align: center;">Burger</h1>
     <div class="row">
         <div class="col-sm-6">
-            <ul>
+            <ul class="burger-list">
                 {{#each burgers}}
                 {{#unless devourced}}
                 {{!-- html to show up if the burgers haven't been devoured --}}
                 {{!-- {{> cats/cat-block sleep=true}} --}}
                 <li class="not-devoured">{{this.id}}. {{this.burger_name}}
-                    <button class="btn btn-primary btn-sm" id = "devouredButton" data-id="{{this.id}}" type="button">Devour
+                    <button class="btn btn-primary btn-sm devouredbutton" data-id={{this.id}} type="button">Devour
                         It!</button>
                 </li>
                 {{/unless}}
@@ -22,7 +22,7 @@
             <ul>
                 {{#each cats}}
                 {{#if devourced}}
-                <li id = "eatenBurger"> {{this.id}}. {{this.burger_name}}</li>
+                <li id="eatenBurger"> {{this.id}}. {{this.burger_name}}</li>
                 {{/if}}
                 {{/each}}
             </ul>

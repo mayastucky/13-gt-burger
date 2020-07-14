@@ -25,6 +25,7 @@ router.get("/burgers", function (req, res) {
   });
 });
 router.post("/api/burgers", function (req, res) {
+  console.log(req.body);
   burger.insertOne(["burger_name"], [req.body.burger_name], function (result) {
     res.json({ id: result.insertId });
   });
@@ -38,16 +39,22 @@ router.post("/api/burgers", function (req, res) {
 //   });
 // });
 
-// router.put("/api/burger/:id", function (req, res) {
-//   //var condition = "id = " + req.params.id;
+router.put("/api/burgers/:id", function (req, res) {
+  var condition = "id = " + req.params.id;
+  console.log("put route");
 
-//   burger.updateOne(true, parseInt(req.params.id), function (result) {
-//     if (result.changedRows == 0) {
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  burger.updateOne(
+    "burgers",
+    req.body,
+    parseInt(req.params.id),
+    function (result) {
+      if (result.changedRows == 0) {
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+    }
+  );
+});
 
 module.exports = router;
