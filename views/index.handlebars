@@ -10,7 +10,7 @@
                 {{!-- html to show up if the burgers haven't been devoured --}}
                 {{!-- {{> cats/cat-block sleep=true}} --}}
                 <li class="not-devoured">{{this.id}}. {{this.burger_name}}
-                    <button class="devoured btn btn-primary btn-sm " data-id="{{this.id}}" type="button">Devour
+                    <button class="btn btn-primary btn-sm" id = "devouredButton" data-id="{{this.id}}" type="button">Devour
                         It!</button>
                 </li>
                 {{/unless}}
@@ -22,7 +22,7 @@
             <ul>
                 {{#each cats}}
                 {{#if devourced}}
-                <li class="devoured"> {{this.id}}. {{this.burger_name}}</li>
+                <li id = "eatenBurger"> {{this.id}}. {{this.burger_name}}</li>
                 {{/if}}
                 {{/each}}
             </ul>
