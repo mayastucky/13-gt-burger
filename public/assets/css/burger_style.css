@@ -16,3 +16,15 @@ button {
 img {
   justify-content: center;
 }
+
+.devoured-burgers {
+  margin: 20px;
+}
+
+#eatenBurger {
+  margin: 10px;
+}
+
+h6 {
+  text-align: center;
+}

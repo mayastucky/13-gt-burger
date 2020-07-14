@@ -21,8 +21,9 @@
         </div>
 
         <div class="col-sm-6">
-            <ul>
-                {{#each cats}}
+            <h6>Devoured Burgers</h6>
+            <ul class="devoured-burgers">
+                {{#each burgers}}
                 {{#if devourced}}
                 <li id="eatenBurger"> {{this.id}}. {{this.burger_name}}</li>
                 {{/if}}
