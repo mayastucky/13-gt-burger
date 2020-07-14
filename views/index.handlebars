@@ -1,7 +1,7 @@
 {{!-- PUT IN STUFF TO BE SHOVED INTO MAIN  --}}
 
 <div class="container">
-    <h1>Burger</h1>
+    <h1 style="text-align: center;">Burger</h1>
     <div class="row">
         <div class="col-sm-6">
             <ul>
@@ -10,7 +10,7 @@
                 {{!-- html to show up if the burgers haven't been devoured --}}
                 {{!-- {{> cats/cat-block sleep=true}} --}}
                 <li class="not-devoured">{{this.id}}. {{this.burger_name}}
-                    <button class="devoured btn btn-primary" data-id="{{this.id}}" type="button">Devour
+                    <button class="devoured btn btn-primary btn-sm " data-id="{{this.id}}" type="button">Devour
                         It!</button>
                 </li>
                 {{/unless}}
@@ -31,11 +31,14 @@
 
 
 
-
-    <form class="create-form" id="newBurger">
-        <div class="form-group">
-            <input type="text" id="nb" name="burger_name">
-            <button type="submit" class="btn btn-primary" id="addButton">Add Burger</button>
+    <div class="row justify-content-center">
+        <div class="col justify-content-center">
+            <form class="create-form" id="newBurger" style="justify-content: center;">
+                <div class="form-group">
+                    <input type="text" id="nb" name="burger_name">
+                    <button type="submit" class="btn btn-primary" id="addButton">Add Burger</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
