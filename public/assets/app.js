@@ -1,6 +1,7 @@
-//this file doesn't work right 
+//this file doesn't work right
 $(function () {
   $("#devouredButton").on("click", function (event) {
+    event.preventDefault();
     var id = $(this).data("id");
     $.ajax("/api/burgers" + id, {
       type: "PUT",
@@ -13,7 +14,7 @@ $(function () {
     console.log("in the submit");
     event.preventDefault();
     var newBurgs = {
-      burger_name: $("#bn").val().trim(),
+      burger_name: $("#nb").val().trim(),
       //burger_name: $("#bn"),
     };
     $.ajax("/api/burgers", {
