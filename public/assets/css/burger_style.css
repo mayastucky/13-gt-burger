@@ -1,8 +1,9 @@
 body {
-  background-color: gold;
+  background-color: lavender;
 }
 button {
   margin: 20px;
+  background-color: lightpink !important ;
   /* padding: 20px; */
 }
 
@@ -10,4 +11,8 @@ button {
   /* justify-content: center; */
   padding-right: 400px;
   float: right;
+}
+
+img {
+  justify-content: center;
 }
