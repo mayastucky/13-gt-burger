@@ -1,0 +1,13 @@
+body {
+  background-color: gold;
+}
+button {
+  margin: 20px;
+  /* padding: 20px; */
+}
+
+#newBurger {
+  /* justify-content: center; */
+  padding-right: 400px;
+  float: right;
+}
