@@ -1,35 +1,41 @@
 {{!-- PUT IN STUFF TO BE SHOVED INTO MAIN  --}}
-<h1>Burger</h1>
 
-<h2>Cats that are not sleepy!</h2>
+<div class="container">
+    <h1>Burger</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <ul>
+                {{#each burgers}}
+                {{#unless devourced}}
+                {{!-- html to show up if the burgers haven't been devoured --}}
+                {{!-- {{> cats/cat-block sleep=true}} --}}
+                <li class="not-devoured">{{this.id}}. {{this.burger_name}}
+                    <button class="devoured btn btn-primary" data-id="{{this.id}}" type="button">Devour
+                        It!</button>
+                </li>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-<div class="col-sm-6">
-    <ul>
-        {{#each burgers}}
-        {{#unless devoured}}
-        {{!-- html to show up if the burgers haven't been devoured --}}
-        {{!-- {{> cats/cat-block sleep=true}} --}}
-        <li class="not-devoured">{{this.id}}. {{burger_name}}
-            <button class="devoured" data-id={{id}} type="submit" class="btn btn-warning">Devour It!</button></li>
-        {{/unless}}
-        {{/each}}
-    </ul>
-</div>
-
-<div class="col-sm-6">
-    <ul>
-        {{#each cats}}
-        {{#if devoured}}
-        <li class="devoured"> {{this.id}}. {{burger_name}}</li>
-        {{/if}}
-        {{/each}}
-    </ul>
-</div>
-
-
-<form class="create-form" id="newBurger">
-    <div class="form-group">
-        <input type="text" id="ca" name="burger_name">
-        <button type="submit">Add Burger</button>
+        <div class="col-sm-6">
+            <ul>
+                {{#each cats}}
+                {{#if devourced}}
+                <li class="devoured"> {{this.id}}. {{this.burger_name}}</li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
     </div>
-</form>
+
+
+
+
+    <form class="create-form" id="newBurger">
+        <div class="form-group">
+            <input type="text" id="nb" name="burger_name">
+            <button type="submit" class="btn btn-primary" id="addButton">Add Burger</button>
+        </div>
+    </form>
+</div>
