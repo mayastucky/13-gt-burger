@@ -1,4 +1,4 @@
-//this file doesn't work right
+//when you click the button to devour it sends an ajax put request then reloads the page
 $(function () {
   console.log("Hello");
   $(".burger-list").on("click", ".devouredbutton", function (event) {
@@ -14,6 +14,7 @@ $(function () {
       location.reload();
     });
   });
+  //when you click the add button it sends the data in the form through a post request 
   $("#addButton").on("click", function (event) {
     console.log("in the submit");
     event.preventDefault();

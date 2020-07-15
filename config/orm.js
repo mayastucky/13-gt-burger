@@ -9,6 +9,7 @@ var orm = {
       cb(result);
     });
   },
+  //this is the boilerplate insertOne function 
   insertOne: function (table, column, val, cb) {
     var queryString =
       `INSERT INTO ` + table + " (" + column.toString() + ") VALUES (?)";
@@ -17,7 +18,7 @@ var orm = {
       cb(data);
     });
   },
-
+//this is the boilerplate updateOne function 
   updateOne: function (table, valOne, valTwo, cb) {
     var queryString = "UPDATE ?? SET devourced = ? WHERE id = ?";
     console.log(queryString);
@@ -28,7 +29,6 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },

@@ -1,5 +1,5 @@
 const orm = require("../config/orm.js");
-
+//model defines which table should be updated for each function
 const burgers = {
   selectAll: function (cb) {
     orm.selectAll("burgers", function (res) {
